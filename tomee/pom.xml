@@ -38,6 +38,8 @@
         <version>${tomee.version}</version>
         <configuration>
           <config>${project.basedir}/src/main/tomee/conf</config>
+          <keepServerXmlAsThis>true</keepServerXmlAsThis>
+          <keepServerXmlAsthis>true</keepServerXmlAsthis>
           <password>tomee</password>
           <tomeeClassifier>plus</tomeeClassifier>
           <tomeeVersion>${tomee.version}</tomeeVersion>
