@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.acme.javaee</groupId>
+    <artifactId>multiple-contexts</artifactId>
+    <version>1-SNAPSHOT</version>
+  </parent>
+  <groupId>com.acme.javaee.multiple-contexts</groupId>
+  <artifactId>tomee</artifactId>
+  <packaging>pom</packaging>
+  <dependencies>
+    <dependency>
+      <groupId>com.acme.javaee.multiple-contexts</groupId>
+      <artifactId>context1</artifactId>
+      <version>${project.version}</version>
+      <type>war</type>
+    </dependency>
+    <dependency>
+      <groupId>com.acme.javaee.multiple-contexts</groupId>
+      <artifactId>context2</artifactId>
+      <version>${project.version}</version>
+      <type>war</type>
+    </dependency>
+    <dependency>
+      <groupId>com.acme.javaee.multiple-contexts</groupId>
+      <artifactId>context3</artifactId>
+      <version>${project.version}</version>
+      <type>war</type>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.openejb.maven</groupId>
+        <artifactId>tomee-maven-plugin</artifactId>
+        <version>${tomee.version}</version>
+        <configuration>
+          <config>${project.basedir}/src/main/tomee/conf</config>
+          <password>tomee</password>
+          <tomeeClassifier>plus</tomeeClassifier>
+          <tomeeVersion>${tomee.version}</tomeeVersion>
+          <user>tomee</user>
+          <webapps>
+            <webapp>com.acme.javaee.multiple-contexts:context1:${project.version}</webapp>
+            <webapp>com.acme.javaee.multiple-contexts:context2:${project.version}</webapp>
+            <webapp>com.acme.javaee.multiple-contexts:context3:${project.version}</webapp>
+          </webapps>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
